@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.2'
+gem 'bootstrap-sass', '~> 3.1.0'
 
 gem 'sqlite3'
 
@@ -18,6 +19,8 @@ gem 'haml'
 gem 'sass'
 gem 'simple_form'
 gem 'turbolinks'
+gem 'cancan'
+gem 'faker'
 
 gem 'jbuilder', '~> 1.2'
 
@@ -25,6 +28,11 @@ gem 'bcrypt-ruby', '3.1.2'
 
 group :doc do
   gem 'sdoc', require: false
+end
+
+group :test do
+  gem 'capybara'
+  gem 'factory_girl_rails'
 end
 
 group :production do

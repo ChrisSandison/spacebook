@@ -1,16 +1,32 @@
-.uk-form
-  %fieldset
-    %legend Create New Space
-    = simple_form_for @space do |f|
-      .uk-form-row
-        = f.input :name
-      .uk-form-row
-        = f.input :contact_name
-      .uk-form-row
-        = f.input :contact_email
-      .uk-form-row
-        = f.input :contact_number
-      .uk-form-row
-        = f.input :content
-      .uk-form-row
-        = f.submit "Create"
+.form-horizontal
+  %h1 Create New Space
+  = simple_form_for @space do |f|
+    .form-group
+      %label{class: 'col-sm-2 control-label'} Space Name
+      .col-sm-10
+        = f.text_field :name, class: 'form-control', label: false
+    .form-group
+      %label{class: 'col-sm-2 control-label'} Space Contact
+      .col-sm-10
+        = f.text_field :contact_name, class: 'form-control', label: false
+    .form-group
+      %label{class: 'col-sm-2 control-label'} Contact Email
+      .col-sm-10
+        = f.text_field :contact_email, class: 'form-control', label: false
+    .form-group
+      %label{class: 'col-sm-2 control-label'} Contact Phone Number
+      .col-sm-10
+        = f.text_field :contact_number, class: 'form-control', label: false
+    .form-group
+      %label{class: 'col-sm-2 control-label'} Content
+      .col-sm-10
+        = f.text_field :content, class: 'form-control', label: false, placeholder: ""
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        = f.submit "Create", class: "btn btn-default btn-large" 
+
+:coffeescript
+  $ ->
+    $('#space_content').val("")
+
+
