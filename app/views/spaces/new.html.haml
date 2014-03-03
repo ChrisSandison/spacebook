@@ -1,0 +1,16 @@
+.uk-form
+  %fieldset
+    %legend Create New Space
+    = simple_form_for @space do |f|
+      .uk-form-row
+        = f.input :name
+      .uk-form-row
+        = f.input :contact_name
+      .uk-form-row
+        = f.input :contact_email
+      .uk-form-row
+        = f.input :contact_number
+      .uk-form-row
+        = f.input :content
+      .uk-form-row
+        = f.submit "Create"
