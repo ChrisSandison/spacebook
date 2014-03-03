@@ -1,0 +1,14 @@
+.uk-form
+  %fieldset
+    %legend Create New Account
+    = simple_form_for @user do |f|
+      .uk-form-row
+        = f.input :name
+      .uk-form-row
+        = f.input :email
+      .uk-form-row
+        = f.input :password
+      .uk-form-row
+        = f.input :password_confirmation
+      .uk-form-row
+        = f.submit "Create"
