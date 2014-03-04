@@ -7,7 +7,7 @@ class SpacesController < ApplicationController
   def create
     @space = Space.new(space_params)
 
-    if @space.save?
+    if @space.save
       flash[:notice] = "Space #{params[:space][:name]} created!"
       redirect_to root_path
     else
@@ -19,6 +19,7 @@ class SpacesController < ApplicationController
   private
 
   def space_params
-    params.require(:space).permit(:name, :contact_name, :contact_email,)
+    ap params.as_json
+    params.require(:space).permit(:name, :city, :address, :province, :contact_name, :contact_email, :contact_number, :content)
   end
 end
