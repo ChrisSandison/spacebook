@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140304025549) do
+ActiveRecord::Schema.define(version: 20140304051633) do
 
   create_table "regions", force: true do |t|
     t.datetime "created_at"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 20140304025549) do
     t.text     "name"
     t.text     "region_code"
   end
+
+  create_table "reviews", force: true do |t|
+    t.integer  "space_id"
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["space_id"], name: "index_reviews_on_space_id"
 
   create_table "spaces", force: true do |t|
     t.string   "name"

@@ -24,7 +24,6 @@ class SpacesController < ApplicationController
   end
 
   def show
-    ap params.as_json
   end
 
   private

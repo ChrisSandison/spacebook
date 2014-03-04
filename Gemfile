@@ -12,7 +12,6 @@ group :assets do
   gem 'sass-rails', '~> 4.0.0'
 end
 
-gem 'uikit-rails'
 gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'haml'
