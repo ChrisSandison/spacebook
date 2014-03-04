@@ -1,7 +1,6 @@
 %header.navbar.navbar-fixed-top.navbar-inverse
-  .navbar-inner
-    .container
-      Spacebook
-      / %span= link_to "Create Account", new_user_path
-      / %span= link_to "Sign In", new_session_path
-      %span= link_to "Create Space", new_space_path
+	.container-fluid
+		.navbar-header
+			%button.navbar-toggle -# TODO finish
+			= link_to 'Spacebook', root_path
+			%span= link_to "Create Space", new_space_path

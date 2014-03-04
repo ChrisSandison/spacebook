@@ -4,43 +4,44 @@
     = f.error_notification
     - #TODO list errors here
     .form-group
-      %label{class: 'col-sm-2 control-label'} Space Name
-      .col-sm-10
+      %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Space Name
+      .col-sm-6
         = f.text_field :name, class: 'form-control', label: false
     .form-group
-      %label{class: 'col-sm-2 control-label'} Address
-      .col-sm-10
+      %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Address
+      .col-sm-6
         = f.text_field :address, class: 'form-control', label: false
     .form-group
-      %label{class: 'col-sm-2 control-label'} City
-      .col-sm-10
+      %label{class: 'col-sm-2 col-sm-offset-2 control-label'} City
+      .col-sm-6
         = f.text_field :city, class: 'form-control', label: false
     .form-group
-      %label{class: 'col-sm-2 control-label'} Space Name
-      .col-sm-10
-        = f.input :province, collection: Region.provinces, class: 'form-control', label: false
+      %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Space Name
+      .col-sm-6
+        = f.input :province, collection: Region.provinces, label: false
     .form-group
-      %label{class: 'col-sm-2 control-label'} Space Contact
-      .col-sm-10
+      %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Space Contact
+      .col-sm-6
         = f.text_field :contact_name, class: 'form-control', label: false
     .form-group
-      %label{class: 'col-sm-2 control-label'} Contact Email
-      .col-sm-10
+      %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Contact Email
+      .col-sm-6
         = f.text_field :contact_email, class: 'form-control', label: false
     .form-group
-      %label{class: 'col-sm-2 control-label'} Contact Phone Number
-      .col-sm-10
+      %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Contact Phone Number
+      .col-sm-6
         = f.text_field :contact_number, class: 'form-control', label: false
     .form-group
-      %label{class: 'col-sm-2 control-label'} Content
-      .col-sm-10
+      %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Content
+      .col-sm-6
         = f.text_field :content, class: 'form-control', label: false, placeholder: ""
     .form-group
-      .col-sm-offset-2.col-sm-10
-        = f.submit "Create", class: "btn btn-default btn-large" 
+      .col-sm-offset-4.col-sm-8
+        = f.submit "Create", class: "btn btn-default btn-large btn-primary" 
 
 :coffeescript
   $ ->
     $('#space_content').val("")
+    $('#space_province').addClass('form-control')
 
 
