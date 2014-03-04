@@ -1,0 +1,8 @@
+.container-fluid
+  .row
+    %h3 Select a Province
+  .row
+    %ul.nav.nav-pills.nav-stacked
+      - Region.provinces.each do |province|
+        %li
+          = link_to province[0], spaces_path(province: province[1])
