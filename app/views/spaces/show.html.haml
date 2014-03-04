@@ -1,21 +1,17 @@
 .container-fluid
   .row
-    .col-mid-4.col-mid-offset-8
+    .col-md-4.col-md-offset-8
       = @space.name
   .row
-    .col-mid-4
-      %img{src: "https://maps.googleapis.com/maps/api/staticmap?center=#{@space.address},#{@space.city}, #{@space.province_name}&size=600x300&sensor=false&markers=color:red%7Clabel:#{@space.name}%7C#{@space.address},#{@space.city}, #{@space.province_name}"}
-  .row
-    .col-mid-4
+    .col-md-8
+      %img{src: "https://maps.googleapis.com/maps/api/staticmap?center=#{@space.address},#{@space.city}, #{@space.province_name}&size=500x300&sensor=false&markers=color:red%7Clabel:#{@space.name}%7C#{@space.address},#{@space.city}, #{@space.province_name}"}
+    .col-md-4.col-md-offset-8
       = @space.formatted_address
-  .row
-    .col-mid-4
+    .col-md-4.col-md-offset-8
       = @space.contact_name
-  .row
-    .col-mid-4
+    .col-md-4.col-md-offset-8
       = @space.contact_number
-  .row
-    .col-mid-4
+    .col-md-4.col-md-offset-8
       = @space.contact_email
 
   - # content

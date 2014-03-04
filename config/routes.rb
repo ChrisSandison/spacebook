@@ -3,6 +3,7 @@ Spacebook::Application.routes.draw do
 
   resources :users
   resources :spaces
+  resources :reviews
 
   resources :sessions, only: [:new, :create, :destroy]
 
