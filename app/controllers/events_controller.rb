@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = @space.event.create(event_params)
+    @event = @space.events.create(event_params)
 
     if @event.save
       flash[:notice] = "Event #{@event.name} created!"
@@ -20,6 +20,8 @@ class EventsController < ApplicationController
   private
 
     def event_params
+      ap params.as_json
+      binding.pry
       params.require(:event).permit(:name, :content, :takes_place_at)
     end
 end

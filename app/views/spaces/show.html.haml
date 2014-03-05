@@ -26,7 +26,7 @@
 
   .row
     .pagination
-      - if @paginate
+      - if @paginate_reviews
         .col-md-12.col-md-offset-1
           = will_paginate @reviews, renderer: BootstrapPagination::Rails
       - @reviews.each do |review|

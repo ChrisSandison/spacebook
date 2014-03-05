@@ -30,7 +30,14 @@ class SpacesController < ApplicationController
      if @reviews.count > 5
       page = params[:page] || 1
       @reviews = @space.reviews.paginate(page: page, per_page: 5)
-      @paginate = true
+      @paginate_reviews = true
+    end
+
+    @events = @space.events
+    if @events.count > 5
+      page = params[:page] || 1
+      @events = @space.events.paginate(page: page, per_page: 5)
+      @paginate_events = true
     end
   end
 

@@ -1,6 +1,7 @@
 class Space < ActiveRecord::Base
 
   has_many :reviews
+  has_many :events
 
   validates :address, presence: true
   validates :city, presence: true

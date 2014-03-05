@@ -19,8 +19,7 @@
       .form-group
         %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Event Date
         .col-sm-6
-          #datepicker{data: {:"date-format" => "dd-mm-yyyy"}}
-            %input.form-control
+          = f.input :takes_place_at, as: :string, input_html: { class: 'date_picker'}, label: false
       
       .form-group
         .col-sm-offset-4.col-sm-8
@@ -36,4 +35,7 @@
       for error in all_errors.split(',')
         $(error).parent().parent().addClass('has-error')
 
-    $('#datepicker').datepicker()
+    $('.date_picker').datetimepicker()
+    $('.date_picker').addClass('form-control')
+
+    
