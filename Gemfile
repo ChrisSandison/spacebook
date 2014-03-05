@@ -20,6 +20,7 @@ gem 'simple_form'
 gem 'turbolinks'
 gem 'cancan'
 gem 'faker'
+gem 'will_paginate-bootstrap'
 
 gem 'jbuilder', '~> 1.2'
 

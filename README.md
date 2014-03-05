@@ -1,14 +1,11 @@
 Project for CSC300
 
 TODO IMMEDIATE:
-* display for space
-* add reviews
-* add ratings
-* add policies
 * add events
-* continue with rest of data modelling
+* add event contact blocks
 
 TODO LATER
+* ratings for space
 * breadcrumbs for province/spaces on browsing
 
 NICE TO HAVES - all users are low priority now:

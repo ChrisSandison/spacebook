@@ -14,11 +14,12 @@ class ApplicationController < ActionController::Base
   end
 
   def lookup_space
-    if Space.find(params[:id]).blank?
+    space_id = params[:space_id] || params[:id]
+    if Space.find(space_id).blank?
       flash[:error] = "Space not found"
       redirect_to root_path
     else
-      @space = Space.find(params[:id])
+      @space = Space.find(space_id)
     end
   end
 end

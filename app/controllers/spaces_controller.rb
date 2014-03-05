@@ -1,10 +1,13 @@
 class SpacesController < ApplicationController
 
   before_filter :lookup_province, only: :index
-  before_filter :lookup_space, only: :show
+  before_filter :lookup_space, only: [:show, :edit, :update]
 
   def new
     @space = Space.new
+    if params[:province].present? && Region.exists?(params[:province])
+      @space.province = Region.get_region_code_from_name(params[:province])
+    end
   end
 
   def create
@@ -14,7 +17,6 @@ class SpacesController < ApplicationController
       flash[:notice] = "Space #{params[:space][:name]} created!"
       redirect_to root_path
     else
-      # TODO - color error classes
       render :new, status: 403
     end
   end
@@ -24,6 +26,24 @@ class SpacesController < ApplicationController
   end
 
   def show
+    @reviews = @space.reviews
+     if @reviews.count > 5
+      page = params[:page] || 1
+      @reviews = @space.reviews.paginate(page: page, per_page: 5)
+      @paginate = true
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @space.update(space_params)
+      flash[:notice] = "#{@space.name} Updated!"
+      redirect_to space_path(id: @space.id)
+    else
+      render :edit, status: 403
+    end
   end
 
   private

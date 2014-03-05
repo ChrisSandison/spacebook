@@ -6,3 +6,6 @@
       - @spaces.each do |space|
         %li
           = link_to space.name, space_path(space.id)
+
+  .row
+    = link_to "Create Space For #{@province.name}", new_space_path(province: @province.name), class: 'btn btn-large btn-primary'

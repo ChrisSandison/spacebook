@@ -1,0 +1,31 @@
+.form-horizontal
+  %h1= "New Review For #{@space.name}"
+  %input{type: 'hidden', value: @review.errors.keys.map{|k| "#review_#{k}" }.join(','), id: 'errors'}
+  .col-md-12
+    = simple_form_for [@space, @review] do |f|
+      .col-md-offset-2
+        = f.error_notification
+
+      .form-group
+        %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Your Name
+        .col-sm-6
+          = f.text_field :created_by_name, class: 'form-control', label: false
+      
+      .form-group
+        %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Review
+        .col-sm-6
+          = f.input :content, as: :text, label: false
+    
+      .form-group
+        .col-sm-offset-4.col-sm-8
+          = f.submit "Create", class: "btn btn-default btn-large btn-primary" 
+
+:coffeescript
+  $ ->
+    $('#review_content').addClass("form-control")
+
+    all_errors = $('#errors').val().split(',')
+    for error in all_errors
+      $(error).parent().parent().addClass('has-error')
+
+
