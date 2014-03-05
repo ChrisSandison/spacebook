@@ -5,6 +5,7 @@ TODO IMMEDIATE:
 * add event contact blocks
 
 TODO LATER
+* finish entering time for event - look at JS fiddle to get date, also find a way to enter time of day
 * ratings for space
 * breadcrumbs for province/spaces on browsing
 

@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140305013831) do
+ActiveRecord::Schema.define(version: 20140305115116) do
+
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.string   "content"
+    t.datetime "takes_place_at"
+    t.integer  "space_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "events", ["space_id"], name: "index_events_on_space_id"
 
   create_table "regions", force: true do |t|
     t.datetime "created_at"

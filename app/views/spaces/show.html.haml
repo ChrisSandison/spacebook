@@ -38,6 +38,9 @@
         .row
           .well.col-md-12.col-md-offset-1
             = review.content
+
+    .col-md-8
+      = link_to 'Create New Event', new_space_event_path(space_id: @space.id), class: 'btn btn-primary'
             
 
     .right-col

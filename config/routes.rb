@@ -4,6 +4,7 @@ Spacebook::Application.routes.draw do
   resources :users
   resources :spaces do
     resources :reviews
+    resources :events
   end
 
   resources :sessions, only: [:new, :create, :destroy]

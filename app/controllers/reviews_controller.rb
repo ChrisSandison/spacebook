@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
 
-  before_filter :lookup_space, only: [:new, :create]
+  before_filter :lookup_space
 
   def new
     @review = Review.new
