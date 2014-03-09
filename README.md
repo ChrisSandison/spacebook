@@ -1,11 +1,12 @@
 Project for CSC300
 
 TODO IMMEDIATE:
-* add events
-* add event contact blocks
+* test events pagination
+* implement safe space policy text
+* clean up colors to match
+
 
 TODO LATER
-* finish entering time for event - look at JS fiddle to get date, also find a way to enter time of day
 * ratings for space
 * breadcrumbs for province/spaces on browsing
 

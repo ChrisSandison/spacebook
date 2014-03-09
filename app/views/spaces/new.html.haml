@@ -24,26 +24,29 @@
     .form-group
       %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Space Contact
       .col-sm-6
-        = f.text_field :contact_name, class: 'form-control', label: false
+        = f.text_field :contact_name, class: 'form-control', label: false, hint: "Optional"
     .form-group
       %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Contact Email
       .col-sm-6
-        = f.text_field :contact_email, class: 'form-control', label: false
+        = f.text_field :contact_email, class: 'form-control', label: false, hint: "Optional"
     .form-group
       %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Contact Phone Number
       .col-sm-6
-        = f.text_field :contact_number, class: 'form-control', label: false
+        = f.text_field :contact_number, class: 'form-control', label: false, hint: "Optional"
     .form-group
-      %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Content
+      %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Website
       .col-sm-6
-        = f.text_field :content, class: 'form-control', label: false, placeholder: ""
+        = f.text_field :contact_number, class: 'form-control', label: false, hint: "Optional"
+    .form-group
+      %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Space Policy
+      .col-sm-6
+        = f.text_field :content, class: 'form-control', label: false, hint: "Optional"
     .form-group
       .col-sm-offset-4.col-sm-8
         = f.submit "Create", class: "btn btn-default btn-large btn-primary" 
 
 :coffeescript
   $ ->
-    $('#space_content').val("")
     $('#space_province').addClass('form-control')
 
     all_errors = $('#errors').val().split(',')

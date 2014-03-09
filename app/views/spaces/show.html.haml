@@ -1,47 +1,75 @@
--# todo look at right-col and left-col for these
-.container-fluid
-  .right-col
-    .space_info
-      .row
-        .col-md-8
-          = @space.name
-        .col-md-8
-          = @space.formatted_address
-        .col-md-8
-          = @space.contact_name
-        .col-md-8
-          = @space.contact_number
-        .col-md-8
-          = @space.contact_email
+.container
+  .row
+    .col-md-12
+      %h1= @space.name
+  .row
+    .col-md-7.space-map
+      %img.map{src: "https://maps.googleapis.com/maps/api/staticmap?center=#{@space.address},#{@space.city}, #{@space.province_name}&size=350x150&sensor=false&markers=color:red%7Clabel:#{@space.name}%7C#{@space.address},#{@space.city}, #{@space.province_name}"}
+      
+      .info-box.space-information.row
+        .info-bit.col-md-4
+          %label Address
+          %h4= @space.formatted_address
+
+        .info-bit.col-md-4
+          %label Contact number
+          %h4= @space.contact_number
+
+        - if @space.website.present?
+          .info-bit.col-md-4
+            %label Website
+            %h4 
+              = @space.website
+      %br
+
+      %a.btn.btn-primary.btn-lg.pull-right{:href => "#"} Contact space
+
+      %a.btn.btn-primary.btn-lg.pull-right{href: edit_space_path(id: @space.id)} Edit
+
+      %a.btn.btn-primary.btn-lg.pull-right{:href => new_space_event_path(space_id: @space.id)} New Event
+
+      %a.btn.btn-primary.btn-lg.pull-right{:href => new_space_review_path(space_id: @space.id)} New Review
+
+      .row.space-tabs
         .col-md-12
-          = link_to 'Edit Description', edit_space_path, class: 'btn btn-primary edit-button'
-  .left-col
-    .row#map
-      .col-md-12#map
-        %img.map{src: "https://maps.googleapis.com/maps/api/staticmap?center=#{@space.address},#{@space.city}, #{@space.province_name}&size=640x300&sensor=false&markers=color:red%7Clabel:#{@space.name}%7C#{@space.address},#{@space.city}, #{@space.province_name}"}
+          %ul.nav.nav-tabs
+            %li.active
+              %a{"data-toggle" => "tab", href: "#reviews"} Reviews
+            %li
+              %a{"data-toggle" => "tab", href: "#events"} Events
+       
 
-  .row
-    .col-md-8.col-md-offset-1
-      = link_to 'Write New Review', new_space_review_path(space_id: @space.id), class: 'btn btn-primary'
+          .tab-content
+            #reviews.tab-pane.active
+              %ul.space-reviews
+                - @reviews.each do |review|
+                  %li
+                    %p= review.content
+                    %h5= "by #{review.created_by_name} on #{review.created_at.strftime('%B %d, %Y')}"
+            - if @paginate_reviews
+              .pagination
+                = will_paginate @reviews, renderer: BootstrapPagination::Rails
 
-  .row
-    .pagination
-      - if @paginate_reviews
-        .col-md-12.col-md-offset-1
-          = will_paginate @reviews, renderer: BootstrapPagination::Rails
-      - @reviews.each do |review|
-        .row
-          .col-md-12.col-md-offset-1
-            %span
-              %h3.review_author= review.created_by_name
-              %span.note= review.created_at.strftime('%B %d, %Y')
-        .row
-          .well.col-md-12.col-md-offset-1
-            = review.content
+            #events.tab-pane
+              %ul.space-events
+                - @events.each do |event|
+                  %li.row
+                    .col-md-2.col-sm-4.col-xs-4.date
+                      %span= event.takes_place_at.strftime('%B')
+                      %h3= event.takes_place_at.day
+                      %span= event.takes_place_at.year
+                    .col-md-10.col-sm-8.col-xs-8.content
+                      %h3= event.name
+                      %p= event.content
+                - if @paginate_events
+                  .pagination
+                    = will_paginate @events, renderer: BootstrapPagination::Rails
 
-    .col-md-8
-      = link_to 'Create New Event', new_space_event_path(space_id: @space.id), class: 'btn btn-primary'
-            
+    .col-md-2.space-pictures.hidden-xs.hidden-sm
+      %img{:src => "http://placehold.it/200x180&text=picture"}
+      %img{:src => "http://placehold.it/200x180&text=picture"}
+      %img{:src => "http://placehold.it/200x180&text=picture"}
 
-    .right-col
-      - # TODO events
+    .col-md-3.additional-meta
+      %h3 Additional Metadata or information
+      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, recusandae, sequi, eos fuga quae iusto iure soluta amet qui dolore rem labore explicabo repellendus totam enim debitis rerum sit unde?
