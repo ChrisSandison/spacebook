@@ -1,0 +1,10 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1 You have recieved an email from spacebook
+    %p
+      You have been sent the following message
+    %p= @message
+    %p= "You can reply to this message at #{@reply_email}"

@@ -1,0 +1,23 @@
+.form-horizonral
+  %h1= "Contact #{@space.name}"
+  = simple_form_for @contact_form, method: :post, url: send_email_space_path(id: @space.id) do |f|
+    .col.md-offset-2
+      = f.error_notification
+
+    .form-group
+      %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Your Email
+      .col-sm-6
+        = f.text_field :reply_email, class: 'form-control', label: false
+        
+    .form-group
+      %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Your Message
+      .col-sm-6
+        = f.input :email_message, as: :text, class: 'form-control', label: false
+
+    .form-group
+      .col-sm-offset-4.col-sm-8
+        = f.submit "Send", class: "btn btn-default btn-large btn-primary"
+
+:coffeescript
+  $ ->
+    $('#contact_form_email_message').addClass('form-control')

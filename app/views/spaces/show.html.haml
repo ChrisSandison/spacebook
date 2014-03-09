@@ -19,10 +19,11 @@
           .info-bit.col-md-4
             %label Website
             %h4 
-              = @space.website
+              %a.btn.btn-primary.btn-md{href: @space.formatted_website} Visit
       %br
 
-      %a.btn.btn-primary.btn-lg.pull-right{:href => "#"} Contact space
+      - if @space.contact_email.present?
+        %a.btn.btn-primary.btn-lg.pull-right{:href => contact_space_path(id: @space.id)} Contact space
 
       %a.btn.btn-primary.btn-lg.pull-right{href: edit_space_path(id: @space.id)} Edit
 
@@ -32,13 +33,12 @@
 
       .row.space-tabs
         .col-md-12
-          %ul.nav.nav-tabs
+          %ul.nav.nav-tabs{"data-tabs" => "tabs"}
             %li.active
-              %a{"data-toggle" => "tab", href: "#reviews"} Reviews
+              %a#reviews_tab{"data-toggle" => "tab", href: "#reviews"} Reviews
             %li
-              %a{"data-toggle" => "tab", href: "#events"} Events
+              %a#events_tab{"data-toggle" => "tab", href: "#events"} Events
        
-
           .tab-content
             #reviews.tab-pane.active
               %ul.space-reviews
@@ -46,9 +46,9 @@
                   %li
                     %p= review.content
                     %h5= "by #{review.created_by_name} on #{review.created_at.strftime('%B %d, %Y')}"
-            - if @paginate_reviews
-              .pagination
-                = will_paginate @reviews, renderer: BootstrapPagination::Rails
+              - if @paginate_reviews
+                .pagination
+                  = will_paginate @reviews, renderer: BootstrapPagination::Rails
 
             #events.tab-pane
               %ul.space-events
@@ -61,15 +61,34 @@
                     .col-md-10.col-sm-8.col-xs-8.content
                       %h3= event.name
                       %p= event.content
-                - if @paginate_events
-                  .pagination
-                    = will_paginate @events, renderer: BootstrapPagination::Rails
-
-    .col-md-2.space-pictures.hidden-xs.hidden-sm
-      %img{:src => "http://placehold.it/200x180&text=picture"}
-      %img{:src => "http://placehold.it/200x180&text=picture"}
-      %img{:src => "http://placehold.it/200x180&text=picture"}
+                  - if @paginate_events
+                    .pagination
+                      = will_paginate @events, renderer: BootstrapPagination::Rails
 
     .col-md-3.additional-meta
-      %h3 Additional Metadata or information
-      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, recusandae, sequi, eos fuga quae iusto iure soluta amet qui dolore rem labore explicabo repellendus totam enim debitis rerum sit unde?
+      %h3 About this space
+      - if @space.content.present?
+        %p= @space.content
+      - else
+        %a.btn.btn-primary.btn-lg.pull-right{href: edit_space_path(id: @space.id)} Add a description!
+
+
+    .col-md-2.space-pictures.hidden-xs.hidden-sm
+      / %img{:src => "http://placehold.it/200x180&text=picture"}
+      / %img{:src => "http://placehold.it/200x180&text=picture"}
+      / %img{:src => "http://placehold.it/200x180&text=picture"}
+
+:coffeescript
+  $('#events_tab').click ->
+    return if $('#events_tab').hasClass('active')
+    $('#reviews').removeClass('active')
+    $('#reviews_tab').parent().removeClass('active')
+    $('#events').addClass('active')
+    $('#events_tab').parent().addClass('active')
+
+  $('#reviews_tab').click ->
+    return if $('#reviews_tab').hasClass('active')
+    $('#events').removeClass('active')
+    $('#events_tab').parent().removeClass('active')
+    $('#reviews').addClass('active')
+    $('#reviews_tab').parent().addClass('active')

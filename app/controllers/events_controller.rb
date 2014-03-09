@@ -20,8 +20,6 @@ class EventsController < ApplicationController
   private
 
     def event_params
-      ap params.as_json
-      binding.pry
       params.require(:event).permit(:name, :content, :takes_place_at)
     end
 end

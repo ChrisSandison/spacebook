@@ -1,7 +1,7 @@
 class SpacesController < ApplicationController
 
   before_filter :lookup_province, only: :index
-  before_filter :lookup_space, only: [:show, :edit, :update]
+  before_filter :lookup_space, only: [:show, :edit, :update, :contact, :send_email]
 
   def new
     @space = Space.new
@@ -14,8 +14,7 @@ class SpacesController < ApplicationController
     @space = Space.new(space_params)
 
     if @space.save
-      flash[:notice] = "Space #{params[:space][:name]} created!"
-      redirect_to root_path
+      redirect_to space_path(id: @space.id)
     else
       render :new, status: 403
     end
@@ -26,14 +25,14 @@ class SpacesController < ApplicationController
   end
 
   def show
-    @reviews = @space.reviews
+    @reviews = @space.reviews.order(created_at: :desc)
      if @reviews.count > 5
       page = params[:page] || 1
       @reviews = @space.reviews.paginate(page: page, per_page: 5)
       @paginate_reviews = true
     end
 
-    @events = @space.events
+    @events = @space.events.order(takes_place_at: :desc)
     if @events.count > 5
       page = params[:page] || 1
       @events = @space.events.paginate(page: page, per_page: 5)
@@ -46,17 +45,34 @@ class SpacesController < ApplicationController
 
   def update
     if @space.update(space_params)
-      flash[:notice] = "#{@space.name} Updated!"
       redirect_to space_path(id: @space.id)
     else
       render :edit, status: 403
     end
   end
 
+  def contact
+    @contact_form = ::ContactForm.new(space: @space)
+  end
+
+  def send_email
+    @contact_form = ::ContactForm.new(space: @space, reply_email: contact_email_param, email_message: contact_message_param)
+    @contact_form.submit
+    redirect_to space_path(id: @space.id, flash: "sent_email")
+  end
+
   private
 
   def space_params
     params.require(:space).permit(:name, :city, :address, :province, :contact_name, :contact_email, :contact_number, :content, :website)
+  end
+
+  def contact_email_param
+    params.require(:contact_form).permit(:reply_email)
+  end
+
+  def contact_message_param
+    params.require(:contact_form).permit(:email_message)
   end
   
 end

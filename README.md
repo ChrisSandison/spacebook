@@ -1,9 +1,12 @@
 Project for CSC300
 
 TODO IMMEDIATE:
-* test events pagination
-* implement safe space policy text
+* finish implementing mailer for contacting about space - just finish up the mailer and controller methods. Make sure to comment out the actual sending - we don't want emails going out from this app in production
+* add required-type icon for form field labels
+* field spacing is off for sending message
 * clean up colors to match
+* header menu isn't displaying at minized mobile size
+* implement redirect flashes (start with the sending email one in the spaces controller)
 
 
 TODO LATER
