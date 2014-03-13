@@ -5,6 +5,9 @@ gem 'bootstrap-sass', '~> 3.1.0'
 
 gem 'sqlite3'
 
+source "https://rubygems.org"
+ruby '2.0.0'
+
 group :assets do
   gem 'coffee-rails', '~> 4.0.0'
   gem 'jquery-ui-rails'
