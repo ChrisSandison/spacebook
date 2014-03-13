@@ -1,12 +1,8 @@
 source 'https://rubygems.org'
+ruby '2.0.0'
 
 gem 'rails', '4.0.2'
 gem 'bootstrap-sass', '~> 3.1.0'
-
-gem 'sqlite3'
-
-source "https://rubygems.org"
-ruby '2.0.0'
 
 group :assets do
   gem 'coffee-rails', '~> 4.0.0'
@@ -50,4 +46,5 @@ group :development do
   gem 'awesome_print'
   gem 'pry-rescue'
   gem 'jazz_hands'
+  gem 'sqlite3'
 end
