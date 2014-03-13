@@ -1,7 +1,13 @@
 .container
   .row
+    .col-sm-2
+      = link_to "Back to #{@space.province_name} Spaces", spaces_path(province: @space.province)
+  .row
     .col-md-12
       %h1= @space.name
+      - if @alert_text.present?
+        .alert.alert-success
+          = @alert_text
   .row
     .col-md-7.space-map
       %img.map{src: "https://maps.googleapis.com/maps/api/staticmap?center=#{@space.address},#{@space.city}, #{@space.province_name}&size=350x150&sensor=false&markers=color:red%7Clabel:#{@space.name}%7C#{@space.address},#{@space.city}, #{@space.province_name}"}

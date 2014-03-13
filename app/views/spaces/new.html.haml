@@ -6,19 +6,27 @@
       = f.error_notification
 
     .form-group
-      %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Space Name
+      %label{class: 'col-sm-2 col-sm-offset-2 control-label'} 
+        Space Name
+        .glyphicon.glyphicon-asterisk
       .col-sm-6
         = f.text_field :name, class: 'form-control', label: false
     .form-group
-      %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Address
+      %label{class: 'col-sm-2 col-sm-offset-2 control-label'} 
+        Address
+        .glyphicon.glyphicon-asterisk
       .col-sm-6
         = f.text_field :address, class: 'form-control', label: false
     .form-group
-      %label{class: 'col-sm-2 col-sm-offset-2 control-label'} City
+      %label{class: 'col-sm-2 col-sm-offset-2 control-label'} 
+        City
+        .glyphicon.glyphicon-asterisk
       .col-sm-6
         = f.text_field :city, class: 'form-control', label: false
     .form-group
-      %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Space Name
+      %label{class: 'col-sm-2 col-sm-offset-2 control-label'} 
+        Province
+        .glyphicon.glyphicon-asterisk
       .col-sm-6
         = f.input :province, collection: Region.provinces, label: false
     .form-group

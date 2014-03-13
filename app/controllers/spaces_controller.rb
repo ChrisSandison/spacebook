@@ -25,6 +25,7 @@ class SpacesController < ApplicationController
   end
 
   def show
+    load_alert
     @reviews = @space.reviews.order(created_at: :desc)
      if @reviews.count > 5
       page = params[:page] || 1
@@ -45,7 +46,7 @@ class SpacesController < ApplicationController
 
   def update
     if @space.update(space_params)
-      redirect_to space_path(id: @space.id)
+      redirect_to space_path(id: @space.id, flash: "updated")
     else
       render :edit, status: 403
     end
@@ -73,6 +74,10 @@ class SpacesController < ApplicationController
 
   def contact_message_param
     params.require(:contact_form).permit(:email_message)
+  end
+
+  def load_alert
+    instance_variable_set("@alert_text", Space.alert_messages[params[:flash]])
   end
   
 end

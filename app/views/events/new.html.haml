@@ -1,5 +1,5 @@
 .form-horizontal
-  %h1= "New Review For #{@space.name}"
+  %h1= "New Event For #{@space.name}"
   %input{type: 'hidden', value: @event.errors.keys.map{|k| "#event_#{k}" }.join(','), id: 'errors'}
   .col-md-12
     = simple_form_for [@space, @event] do |f|
@@ -7,17 +7,23 @@
         = f.error_notification
 
       .form-group
-        %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Event Name
+        %label{class: 'col-sm-2 col-sm-offset-2 control-label'} 
+          Event Name
+          .glyphicon.glyphicon-asterisk
         .col-sm-6
           = f.text_field :name, class: 'form-control', label: false
       
       .form-group
-        %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Info
+        %label{class: 'col-sm-2 col-sm-offset-2 control-label'} 
+          Info
+          .glyphicon.glyphicon-asterisk
         .col-sm-6
           = f.input :content, as: :text, label: false
 
       .form-group
-        %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Event Date
+        %label{class: 'col-sm-2 col-sm-offset-2 control-label'} 
+          Event Date
+          .glyphicon.glyphicon-asterisk
         .col-sm-6
           = f.input :takes_place_at, as: :string, input_html: { class: 'date_picker'}, label: false
       

@@ -9,3 +9,6 @@
 
   .row
     = link_to "Create Space For #{@province.name}", new_space_path(province: @province.name), class: 'btn btn-large btn-primary'
+
+  .row
+    = link_to "Back to Provinces", root_path

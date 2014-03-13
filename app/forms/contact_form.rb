@@ -10,6 +10,6 @@ class ContactForm
   end
 
   def submit(options = {})
-    binding.pry
+    # SpaceMailer.contact_space(space: self.space, reply_email: self.reply_email, email_message: self.email_message)
   end
 end

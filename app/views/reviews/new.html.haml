@@ -7,12 +7,16 @@
         = f.error_notification
 
       .form-group
-        %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Your Name
+        %label{class: 'col-sm-2 col-sm-offset-2 control-label'} 
+          Your Name
+          .glyphicon.glyphicon-asterisk
         .col-sm-6
           = f.text_field :created_by_name, class: 'form-control', label: false
       
       .form-group
-        %label{class: 'col-sm-2 col-sm-offset-2 control-label'} Review
+        %label{class: 'col-sm-2 col-sm-offset-2 control-label'} 
+          Review
+          .glyphicon.glyphicon-asterisk
         .col-sm-6
           = f.input :content, as: :text, label: false
     

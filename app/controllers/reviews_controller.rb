@@ -10,8 +10,7 @@ class ReviewsController < ApplicationController
     @review = @space.reviews.create(review_params)
 
     if @review.save
-      flash[:notice] = "Review for #{@space.name} created!"
-      redirect_to space_path(@space.id)
+      redirect_to space_path(@space.id, flash: "new_review")
     else
       render :new, status: 403
     end

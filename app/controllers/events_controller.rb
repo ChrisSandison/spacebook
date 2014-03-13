@@ -10,8 +10,7 @@ class EventsController < ApplicationController
     @event = @space.events.create(event_params)
 
     if @event.save
-      flash[:notice] = "Event #{@event.name} created!"
-      redirect_to space_path(@space.id)
+      redirect_to space_path(@space.id, flash: "new_event")
     else
       render :new, status: 403
     end
