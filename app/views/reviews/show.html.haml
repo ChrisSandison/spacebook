@@ -1,0 +1,7 @@
+.container
+  .row
+    .col-sm-2
+      = link_to "Back to #{@space.name}", space_path(id: @space.id)
+  .row
+    .col-md-12
+      %h1= "Review for #{@space.name} by #{@review.created_by_name}"

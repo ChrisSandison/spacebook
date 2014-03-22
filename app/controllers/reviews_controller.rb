@@ -16,9 +16,13 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def show
+    @review = Review.find(params[:id])
+  end
+
   private
 
     def review_params
-      params.require(:review).permit(:created_by_name, :content)
+      params.require(:review).permit(:created_by_name, :content, :rating, :event_id, :event_other)
     end
 end

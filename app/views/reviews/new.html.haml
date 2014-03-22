@@ -12,10 +12,42 @@
           .glyphicon.glyphicon-asterisk
         .col-sm-6
           = f.text_field :created_by_name, class: 'form-control', label: false
+
+      .form-group 
+        %label{class: 'col-sm-2 col-sm-offset-2 control-label'}
+          Rating
+          .glyphicon.glyphicon-asterisk
+        .col-sm-6
+          = f.input :rating, collection: (1..5).map{ |i| [i] }, class: 'form-control', label: false
+
+      .form-group
+        %label{class: 'col-sm-2 col-sm-offset-2 control-label'}
+          Which event did you attend?
+          .glyphicon.glyphicon-asterisk
+        .col-sm-6
+          = f.input :event_id, collection: @space.recent_events_as_select, class: 'form-control', label: false
+
+      .form-group.hidden#event_other
+        %label{class: 'col-sm-2 col-sm-offset-2 control-label'}
+          What was the other event that you attended?
+        .col-sm-6
+          = f.text_field :event_other, class: "form-control", label: false
+
+      .form-group
+        %label{class: 'col-sm-2 col-sm-offset-2 control-label'}
+          How would you describe the atmosphere of the space?
+        .col-sm-6
+          = f.text_field :atmosphere, class: "form-control", label: false
+
+      .form-group
+        %label{class: 'col-sm-2 col-sm-offset-2 control-label'}
+          How would you descibe the accesability of the space?
+        .col-sm-6
+          = f.text_field :accesability, class: 'form-control', label: false
       
       .form-group
         %label{class: 'col-sm-2 col-sm-offset-2 control-label'} 
-          Review
+          Any other comments?
           .glyphicon.glyphicon-asterisk
         .col-sm-6
           = f.input :content, as: :text, label: false
@@ -25,8 +57,17 @@
           = f.submit "Create", class: "btn btn-default btn-large btn-primary" 
 
 :coffeescript
+  $('#review_event_id').on "change", ->
+    val = $('#review_event_id').find(':selected').val()
+    if val == "0"
+      $('#event_other').removeClass('hidden')
+    else
+      $('#event_other').addClass('hidden')
+
   $ ->
     $('#review_content').addClass("form-control")
+    $('#review_rating').addClass("form-control")
+    $('#review_event_id').addClass('form-control')
 
     all_errors = $('#errors').val().split(',')
     for error in all_errors

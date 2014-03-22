@@ -49,9 +49,12 @@
             #reviews.tab-pane.active
               %ul.space-reviews
                 - @reviews.each do |review|
-                  %li
-                    %p= review.content
-                    %h5= "by #{review.created_by_name} on #{review.created_at.strftime('%B %d, %Y')}"
+                  %li.row
+                    .col-md-2.col-sm-4.col-xs-4
+                      = link_to '', space_review_path(space_id: @space.id, id: review.id), class: 'glyphicon glyphicon-plus'
+                    .col-md-10.col-sm-8.col-xs-8.content
+                      %p= review.content
+                      %h5= "by #{review.created_by_name} on #{review.created_at.strftime('%B %d, %Y')}"
               - if @paginate_reviews
                 .pagination
                   = will_paginate @reviews, renderer: BootstrapPagination::Rails

@@ -28,5 +28,23 @@ class Space < ActiveRecord::Base
   def formatted_website
     "http://#{website}"
   end
+
+  def average_rating
+    reviews = self.reviews
+    rating_total = reviews.pluck(:rating).sum.to_f
+    rating_count = reviews.count
+    (rating_total / rating_count).round(2)
+  end
+
+  def recent_events_as_select
+    events = recent_events.map do |event|
+      [event.name, event.id]
+    end
+    [["(Event Not Listed)", 0]] + events
+  end
+
+  def recent_events
+    events.where("takes_place_at < ?", Date.today)
+  end
 end
  
