@@ -52,7 +52,9 @@
                   %li.row
                     .col-md-2.col-sm-4.col-xs-4
                       = link_to '', space_review_path(space_id: @space.id, id: review.id), class: 'glyphicon glyphicon-plus'
-                    .col-md-10.col-sm-8.col-xs-8.content
+                    .col-md-2.col-sm-4.col-xs-4.date
+                      %span= review.rating
+                    .col-md-8.col-sm-6.col-xs-6.content
                       %p= review.content
                       %h5= "by #{review.created_by_name} on #{review.created_at.strftime('%B %d, %Y')}"
               - if @paginate_reviews
@@ -75,11 +77,17 @@
                       = will_paginate @events, renderer: BootstrapPagination::Rails
 
     .col-md-3.additional-meta
+      %h3 Rating
+      %h1= @space.average_rating
+      %p.note= "Out of #{@space.reviews.count} reviews"
+
+    .col-md-3.additional-meta
       %h3 About this space
       - if @space.content.present?
         %p= @space.content
       - else
         %a.btn.btn-primary.btn-lg.pull-right{href: edit_space_path(id: @space.id)} Add a description!
+
 
 
     .col-md-2.space-pictures.hidden-xs.hidden-sm

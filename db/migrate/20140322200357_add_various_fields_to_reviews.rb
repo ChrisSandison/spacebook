@@ -3,7 +3,7 @@ class AddVariousFieldsToReviews < ActiveRecord::Migration
     add_column :reviews, :rating, :integer
     add_column :reviews, :event_id, :integer
     add_column :reviews, :atmosphere, :text
-    add_column :reviews, :accesability, :string
+    add_column :reviews, :accessibility, :string
     add_column :reviews, :would_attend, :integer
     add_column :reviews, :would_book, :integer
   end

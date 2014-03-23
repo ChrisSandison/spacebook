@@ -1,4 +1,4 @@
-.form-horizonral
+.form-horizontal
   %h1= "Contact #{@space.name}"
   = simple_form_for @contact_form, method: :post, url: send_email_space_path(id: @space.id) do |f|
     .col.md-offset-2

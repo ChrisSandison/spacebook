@@ -2,7 +2,6 @@ class Review < ActiveRecord::Base
   belongs_to :space
 
   validates :created_by_name, presence: true
-  validates :content, presence: true
   validates :rating, presence: true
   validates :event_id, presence: true
   
@@ -30,4 +29,13 @@ class Review < ActiveRecord::Base
       "No"
     end
   end
+
+  def event_attended
+    if event_id == 0
+      self.event_other
+    else
+      space.events.find(self.event_id).name
+    end
+  end
+  
 end

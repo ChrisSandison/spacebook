@@ -6,15 +6,48 @@
     .col-md-12
       %h1= "Review for #{@space.name} by #{@review.created_by_name}"
 
-  .row
+  .row.rating-box
+    .col-md-4
+      %h1.rating-box-left Event Attended
+    .col-md-6
+      %h1.rating-box-right= @review.event_attended
+
+  .row.rating-box
     .col-md-6
       %h1.rating-box-left Rating
-      %h1.rating-box-left Would book
-      %h1.rating-box-left Would attend again
     .col-md-6
       %h1.rating-box-right= @review.rating
-      %h1.rating-box-right= @review.print_would_book
-      %h1.rating-box-right= @review.print_would_attend
-   -# TODO finish this
+    - if @review.would_book.present?
+      .col-md-6
+        %h1.rating-box-left Would book
+      .col-md-6
+        %h1.rating-box-right= @review.print_would_book
+    - if @review.would_attend.present?
+      .col-md-6
+        %h1.rating-box-left Would attend again
+      .col-md-6
+        %h1.rating-box-right= @review.print_would_attend
+        
+  - if @review.atmosphere.present?
+    .row.rating-box
+      .col-md-4
+        %h1.rating-box-left Atmosphere
+      .col-md-6
+        %h1.rating-box-right= @review.atmosphere
+
+  - if @review.accessibility.present?
+    .row.rating-box
+      .col-md-4
+        %h1.rating-box-left Accessibility
+      .col-md-6
+        %h1.rating-box-right= @review.accessibility
+
+  - if @review.content.present?
+    .row.rating-box
+      .col-md-4
+        %h1.rating-box-left Other Comments
+      .col-md-6
+        %h1.rating-box-right= @review.content
+
 
 

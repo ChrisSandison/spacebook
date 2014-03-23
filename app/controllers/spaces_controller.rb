@@ -26,17 +26,17 @@ class SpacesController < ApplicationController
 
   def show
     load_alert
-    @reviews = @space.reviews.order(created_at: :desc)
-     if @reviews.count > 5
+    @reviews = @space.reviews.order(created_at: :asc)
+     if @reviews.count > 15
       page = params[:page] || 1
-      @reviews = @space.reviews.paginate(page: page, per_page: 5)
+      @reviews = @space.reviews.paginate(page: page, per_page: 15)
       @paginate_reviews = true
     end
 
     @events = @space.events.order(takes_place_at: :desc)
-    if @events.count > 5
+    if @events.count > 10
       page = params[:page] || 1
-      @events = @space.events.paginate(page: page, per_page: 5)
+      @events = @space.events.paginate(page: page, per_page: 10)
       @paginate_events = true
     end
   end
