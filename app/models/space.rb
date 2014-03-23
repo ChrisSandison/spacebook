@@ -32,7 +32,8 @@ class Space < ActiveRecord::Base
   def average_rating
     reviews = self.reviews
     return "-" if reviews.blank?
-    rating_total = reviews.pluck(:rating).sum.to_f
+    rating_total = reviews.pluck(:rating).try(:sum).try(:to_f)
+    return "-" if rating_total.blank?
     rating_count = reviews.count
     (rating_total / rating_count).round(2)
   end
