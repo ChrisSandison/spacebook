@@ -41,6 +41,7 @@ class Space < ActiveRecord::Base
     events = past_events.map do |event|
       [event.name, event.id]
     end
+    events ||= [[]]
     [["(Event Not Listed)", 0]] + events
   end
 
