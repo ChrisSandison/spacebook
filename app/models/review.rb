@@ -14,4 +14,20 @@ class Review < ActiveRecord::Base
   def rating=(val)
     write_attribute :rating, val.to_s.gsub(/\D/, '').to_i
   end
+
+  def print_would_book
+    print_bool :would_book
+  end
+
+  def print_would_attend
+    print_bool :would_attend
+  end
+
+  def print_bool(attr)
+    if self.send(attr) == true
+      "Yes"
+    else
+      "No"
+    end
+  end
 end

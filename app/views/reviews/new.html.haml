@@ -18,7 +18,7 @@
           Rating
           .glyphicon.glyphicon-asterisk
         .col-sm-6
-          = f.input :rating, collection: (1..5).map{ |i| [i] }, class: 'form-control', label: false
+          = f.input :rating, collection: (1..5).map{ |i| [i, i] }, class: 'form-control', label: false
 
       .form-group
         %label{class: 'col-sm-2 col-sm-offset-2 control-label'}
@@ -44,13 +44,26 @@
           How would you descibe the accesability of the space?
         .col-sm-6
           = f.text_field :accesability, class: 'form-control', label: false
-      
+
+      .form-group 
+        %label{class: 'col-sm-2 col-sm-offset-2 control-label'}
+          Would you attend an event at this space again?
+        .col-sm-6
+          = f.input :would_attend, as: :boolean, class: 'form-control', label: false
+
+      .form-group
+        %label{class: 'col-sm-2 col-sm-offset-2 control-label'}
+          Would you book an event at this space?
+        .col-sm-6
+          = f.input :would_book, as: :boolean, class: 'form-control', label: false
+
       .form-group
         %label{class: 'col-sm-2 col-sm-offset-2 control-label'} 
           Any other comments?
           .glyphicon.glyphicon-asterisk
         .col-sm-6
           = f.input :content, as: :text, label: false
+
     
       .form-group
         .col-sm-offset-4.col-sm-8
