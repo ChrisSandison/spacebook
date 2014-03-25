@@ -3,7 +3,7 @@ class Review < ActiveRecord::Base
 
   validates :created_by_name, presence: true
   validates :rating, presence: true
-  
+
   def space_rating(space_id)
     @space = Space.find(space_id)
     @space.average_rating
@@ -30,7 +30,7 @@ class Review < ActiveRecord::Base
   end
 
   def event
-    space.events.where(id: self.event_id)
+    space.events.where(id: self.event_id).last
   end
 
   def event_attended
