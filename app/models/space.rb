@@ -17,6 +17,10 @@ class Space < ActiveRecord::Base
     }
   end
 
+  def self.province_count(province)
+    Space.where(province: province).count
+  end
+
   def province_name
     Region.where("country_id = ? AND region_code = ?", 1, self.province).first.try(:name)
   end
