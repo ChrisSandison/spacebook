@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    binding.pry
     @review = @space.reviews.create(review_params)
 
     if @review.save
@@ -23,6 +24,6 @@ class ReviewsController < ApplicationController
   private
 
     def review_params
-      params.require(:review).permit(:created_by_name, :content, :rating, :event_id, :event_other, :accessabiltity, :would_attend, :would_book)
+      params.require(:review).permit(:created_by_name, :content, :rating, :event_id, :event_other, :accessibility, :atmosphere, :would_attend, :would_book)
     end
 end
