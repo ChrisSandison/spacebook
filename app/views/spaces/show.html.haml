@@ -66,9 +66,9 @@
                 - @events.each do |event|
                   %li.row
                     .col-md-2.col-sm-4.col-xs-4.date
-                      %span= event.takes_place_at.strftime('%B')
-                      %h3= event.takes_place_at.day
-                      %span= event.takes_place_at.year
+                      %span= event.takes_place_at.try(:strftime, '%B')
+                      %h3= event.takes_place_at.try(:day)
+                      %span= event.takes_place_at.try(:year)
                     .col-md-10.col-sm-8.col-xs-8.content
                       %h3= event.name
                       %p= event.content

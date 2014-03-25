@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20140322210438) do
     t.integer  "rating"
     t.integer  "event_id"
     t.text     "atmosphere"
-    t.string   "accesability"
+    t.string   "accessibility"
     t.string   "event_other"
     t.boolean  "would_attend"
     t.boolean  "would_book"
