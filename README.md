@@ -14,6 +14,16 @@
 * photo gallery - look into gem Paperclip and upgrade heroku storage
 * custom heroku domain name - requires $$$
 
+# How To Run Locally
+* download or checkout repository
+* ensure rvm is installed and you have run `rvm use ruby-2.0.0-...` whatever patch you may be on
+* `bundle install`
+* `bundle exec rake db:migrate`
+* There are a couple rake tasks used for populating the regions table that are necessary in order to get all provinces (and eventually states) built for the application so run, since all regions in other models reference the region model through region and country codes:
+* `rake one_timers:seed_regions`
+* `rake one_timers:add_region_name`
+* start with `rails s` or `foreman s` or whatever runner you may use (foreman may be overkill, no delayed job runs in this app so far)
+
 # License
 
 Spacebook is an application for rating, reviewing, locating and contacting DIY Spaces, created for educational purposes (U of T CSC300: Project 2 Option 4)
