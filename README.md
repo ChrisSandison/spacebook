@@ -1,16 +1,18 @@
 # Project for CSC300
 
 # TODO IMMEDIATE:
-* color for site logo text
-* header menu isn't displaying at minized mobile size
+* site logo isn't show up - problem with compiled asset since it works locally
+* header menu isn't displaying at minimized mobile size
+* spacing on site footer - get rid of overlap
 
 # TODO LATER
 * full breadcrumbs for spaces/provinces
-
-# NICE TO HAVES - all users are low priority now:
-* get sign in + sign in errors working
-* get current user and sessions working
-
+* implement user model - use gem Divise to pull user info from other sources
+* event links - link to facebook events or other type
+* implement moderator level user
+* email confirmation system when entering contact email - have contact agree to receive emails from us. This will require user email log model to be examined before sending.
+* photo gallery - look into gem Paperclip and upgrade heroku storage
+* custom heroku domain name - requires $$$
 
 # License
 
