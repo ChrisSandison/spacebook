@@ -3,7 +3,6 @@ class Review < ActiveRecord::Base
 
   validates :created_by_name, presence: true
   validates :rating, presence: true
-  validates :event_id, presence: true
   
   def space_rating(space_id)
     @space = Space.find(space_id)
@@ -30,11 +29,15 @@ class Review < ActiveRecord::Base
     end
   end
 
+  def event
+    space.events.where(id: self.event_id)
+  end
+
   def event_attended
     if event_id == 0
       self.event_other
     else
-      space.events.find(self.event_id).name
+      event.try(:name)
     end
   end
   

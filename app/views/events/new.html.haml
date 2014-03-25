@@ -1,4 +1,6 @@
 .form-horizontal
+  .col-md-offset-2
+    = link_to "Back to #{@space.name}", space_path(id: @space.id)
   %h1= "New Event For #{@space.name}"
   %input{type: 'hidden', value: @event.errors.keys.map{|k| "#event_#{k}" }.join(','), id: 'errors'}
   .col-md-12

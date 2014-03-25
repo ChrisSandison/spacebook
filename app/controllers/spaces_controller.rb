@@ -21,15 +21,15 @@ class SpacesController < ApplicationController
   end
 
   def index 
-    @spaces = Space.where(province: @province.region_code).all
+    @spaces = Space.where(province: @province.region_code).order(city: :asc).group_by(&:city)
   end
 
   def show
     load_alert
     @reviews = @space.reviews.order(created_at: :asc)
-     if @reviews.count > 15
+     if @reviews.count > 10
       page = params[:page] || 1
-      @reviews = @space.reviews.paginate(page: page, per_page: 15)
+      @reviews = @space.reviews.paginate(page: page, per_page: 10)
       @paginate_reviews = true
     end
 

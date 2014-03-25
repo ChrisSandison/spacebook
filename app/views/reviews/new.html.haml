@@ -1,7 +1,10 @@
 .form-horizontal
+  .col-md-offset-2
+    = link_to "Back to #{@space.name}", space_path(id: @space.id)
   %h1= "New Review For #{@space.name}"
   %input{type: 'hidden', value: @review.errors.keys.map{|k| "#review_#{k}" }.join(','), id: 'errors'}
   .col-md-12
+    
     = simple_form_for [@space, @review] do |f|
       .col-md-offset-2
         = f.error_notification
@@ -23,7 +26,6 @@
       .form-group
         %label{class: 'col-sm-2 col-sm-offset-2 control-label'}
           Which event did you attend?
-          .glyphicon.glyphicon-asterisk
         .col-sm-6
           = f.input :event_id, collection: @space.recent_events_as_select, class: 'form-control', label: false
 
@@ -41,13 +43,13 @@
 
       .form-group
         %label{class: 'col-sm-2 col-sm-offset-2 control-label'}
-          How would you descibe the accesability of the space?
+          How would you descibe the accessibility of the space?
         .col-sm-6
-          = f.text_field :accesability, class: 'form-control', label: false
+          = f.text_field :accessibility, class: 'form-control', label: false
 
       .form-group 
         %label{class: 'col-sm-2 col-sm-offset-2 control-label'}
-          Would you attend an event at this space again?
+          Would you attend an event at this space or visit this space again?
         .col-sm-6
           = f.input :would_attend, as: :boolean, class: 'form-control', label: false
 

@@ -7,7 +7,6 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    binding.pry
     @review = @space.reviews.create(review_params)
 
     if @review.save

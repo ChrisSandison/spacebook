@@ -2,10 +2,12 @@
   .row
     %h3= "Spaces in #{@province.name}"
   .row
-    %ul.nav.nav-pills.nav-stacked
-      - @spaces.each do |space|
-        %li
-          = link_to space.name, space_path(space.id)
+    - @spaces.each do |city, spaces|
+      %h4= city
+      %ul.nav.nav-pills.nav-stacked
+        - spaces.each do |space|
+          %li
+            = link_to "#{space.name} - #{space.address}", space_path(space.id)
 
   .row
     = link_to "Create Space For #{@province.name}", new_space_path(province: @province.name), class: 'btn btn-large btn-primary'
